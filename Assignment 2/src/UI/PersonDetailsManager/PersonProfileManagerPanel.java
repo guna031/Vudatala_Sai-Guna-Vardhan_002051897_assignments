@@ -5,7 +5,9 @@
 package UI.PersonDetailsManager;
 
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.Person;
 import model.PersonDirectory;
 
 /**
@@ -13,10 +15,9 @@ import model.PersonDirectory;
  * @author gunav
  */
 public class PersonProfileManagerPanel extends javax.swing.JPanel {
-    
+
     private JPanel userProcessContainer;
     private PersonDirectory perDir;
-    
 
     /**
      * Creates new form PersonProfileManagerPanel
@@ -25,8 +26,7 @@ public class PersonProfileManagerPanel extends javax.swing.JPanel {
         initComponents();
         userProcessContainer = cont;
         perDir = personDir;
-        
-        
+
     }
 
     /**
@@ -59,6 +59,11 @@ public class PersonProfileManagerPanel extends javax.swing.JPanel {
         });
 
         buttonSearch.setText("search");
+        buttonSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSearchActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 10)); // NOI18N
         jLabel1.setText("(please enter the Person's first name or last name or streetaddress to view the Person's details)");
@@ -121,6 +126,37 @@ public class PersonProfileManagerPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_buttonViewAllActionPerformed
+
+    private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
+        // TODO add your handling code here:
+        if (!textSearch.getText().isBlank()) {
+            String searchText = textSearch.getText();
+          
+
+            Person foundAcc = perDir.searchByFirstName(searchText);
+            Person foundAcc2 = perDir.searchByLastName(searchText);
+            Person foundAcc3 = perDir.searchByWorkAdd(searchText);
+            Person foundAcc4 = perDir.searchByHomeAdd(searchText);
+            
+            Person foundPerson = (foundAcc != null) ? foundAcc : (foundAcc2!=null) ? foundAcc2 : (foundAcc3 != null) ? foundAcc3: foundAcc4;
+
+            if (foundPerson != null) {
+
+                ViewJPanel viewPanel = new ViewJPanel(userProcessContainer, perDir, foundPerson);
+                userProcessContainer.add("ViewJPanel", viewPanel);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Person not found, please enter the correct Person details", "Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "enter the person details first", "Person details not entered!", JOptionPane.WARNING_MESSAGE);
+
+        }
+    }//GEN-LAST:event_buttonSearchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

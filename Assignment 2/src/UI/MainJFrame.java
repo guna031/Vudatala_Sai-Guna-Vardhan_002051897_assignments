@@ -24,7 +24,7 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         this.perDir = new PersonDirectory();
-//        generateSampleData();
+        generateSampleData();
     }
 
     /**
@@ -142,6 +142,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     public void generateSampleData(){
         
+ 
         //Person 1 sample data
         Address workAddress = new Address();
         workAddress.setCity("Boston");
@@ -152,12 +153,12 @@ public class MainJFrame extends javax.swing.JFrame {
         workAddress.setZipcode(02115);
         
         Address homeAddress = new Address();
-        workAddress.setCity("Boston");
-        workAddress.setPhnNum(9999999922L);
-        workAddress.setState("MA");
-        workAddress.setStreetAdd("20 Jamaicaway");
-        workAddress.setUnitNum('1');
-        workAddress.setZipcode(02130);
+        homeAddress.setCity("Boston");
+        homeAddress.setPhnNum(9999999922L);
+        homeAddress.setState("MA");
+        homeAddress.setStreetAdd("20 Jamaicaway");
+        homeAddress.setUnitNum('1');
+        homeAddress.setZipcode(02130);
         
         Person p = perDir.addPerson();
         
@@ -167,7 +168,6 @@ public class MainJFrame extends javax.swing.JFrame {
         p.setSocialSecurityNumber("9291921");
         p.setWorkAdd(workAddress);
         p.setHomeAdd(homeAddress);
-        
         
         Address workAddress2 = new Address();
         workAddress2.setCity("San Francisco");
@@ -264,6 +264,9 @@ public class MainJFrame extends javax.swing.JFrame {
         p5.setSocialSecurityNumber("8391027");
         p5.setWorkAdd(workAddress5);
         p5.setHomeAdd(homeAddress5);
+
+
+
         
     }
 

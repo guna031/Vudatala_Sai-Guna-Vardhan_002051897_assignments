@@ -33,7 +33,7 @@ public class PersonDirectory {
         
     }
     
-    public void delAccount(Person person){
+    public void delPerson(Person person){
         persons.remove(person);
     }
     
@@ -57,9 +57,19 @@ public class PersonDirectory {
         return null;
     }
     
-    public Person searchByAdd(String streetAdd){
+    public Person searchByWorkAdd(String streetAdd){
         for (Person p: persons){
             if(p.getWorkAdd().streetAdd.contains(streetAdd)){
+                return p;
+            }
+        }
+        
+        return null;
+    }
+    
+     public Person searchByHomeAdd(String streetAdd){
+        for (Person p: persons){
+            if(p.getHomeAdd().streetAdd.contains(streetAdd)){
                 return p;
             }
         }

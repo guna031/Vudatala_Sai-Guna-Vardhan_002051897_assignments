@@ -4,6 +4,12 @@
  */
 package UI.PersonDetailsManager;
 
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import model.Address;
+import model.Person;
+import model.PersonDirectory;
+
 /**
  *
  * @author gunav
@@ -13,8 +19,20 @@ public class ViewJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewJPanel
      */
-    public ViewJPanel() {
+    
+    private JPanel userProcessContainer;
+    private PersonDirectory perDir;
+    private Person per;
+    
+    public ViewJPanel(JPanel container, PersonDirectory personDir, Person person) {
         initComponents();
+        userProcessContainer = container;
+        perDir = personDir;
+        per = person;
+        
+        refreshAllFields();
+        setViewMode();
+        
     }
 
     /**
@@ -27,7 +45,7 @@ public class ViewJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         labelLastName = new javax.swing.JLabel();
-        textLabelName = new javax.swing.JTextField();
+        textLastName = new javax.swing.JTextField();
         labelAge = new javax.swing.JLabel();
         textAge = new javax.swing.JTextField();
         buttonBack = new javax.swing.JButton();
@@ -70,6 +88,11 @@ public class ViewJPanel extends javax.swing.JPanel {
         labelAge.setText("Age");
 
         buttonBack.setText("<<<BACK");
+        buttonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBackActionPerformed(evt);
+            }
+        });
 
         labelFirstName.setText("First Name");
 
@@ -169,7 +192,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addComponent(lblPhn1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPhn1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         labelStreetAddress.setText("Street Address");
@@ -268,7 +291,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addComponent(lblPhn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPhn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         labelHome.setText("Home Address");
@@ -276,6 +299,11 @@ public class ViewJPanel extends javax.swing.JPanel {
         labelWork.setText("Work Address");
 
         buttonUpdate.setText("Update");
+        buttonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonUpdateActionPerformed(evt);
+            }
+        });
 
         buttonSave.setText("Save");
         buttonSave.addActionListener(new java.awt.event.ActionListener() {
@@ -307,7 +335,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelLastName)
                                 .addGap(44, 44, 44)
-                                .addComponent(textLabelName, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(textLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelFirstName)
                                 .addGap(44, 44, 44)
@@ -317,9 +345,11 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addGap(0, 79, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(homeAddPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelHome))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(labelHome)))
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(workAddPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -329,7 +359,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                         .addComponent(buttonSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonUpdate)
-                        .addGap(54, 54, 54))))
+                        .addGap(62, 62, 62))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,7 +378,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelLastName)
-                    .addComponent(textLabelName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelAge)
@@ -358,18 +388,15 @@ public class ViewJPanel extends javax.swing.JPanel {
                     .addComponent(labelWork)
                     .addComponent(labelHome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(workAddPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(homeAddPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(homeAddPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(workAddPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonUpdate)
                     .addComponent(buttonSave))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {homeAddPanel, workAddPanel});
-
     }// </editor-fold>//GEN-END:initComponents
 
     private void textStreetAddress1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textStreetAddress1ActionPerformed
@@ -422,7 +449,90 @@ public class ViewJPanel extends javax.swing.JPanel {
 
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
         // TODO add your handling code here:
+        
+        String firstName = textFirstName.getText();
+        String lastName = textLastName.getText();
+        int age;
+
+        if (firstName.isBlank() || lastName.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Please Enter all the required fields", "Error!", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        Address homeAddress = new Address();
+        homeAddress.setStreetAdd(textStreetAddress.getText());
+        homeAddress.setState(txtState.getText());
+        homeAddress.setCity(txtCity.getText());
+        homeAddress.setUnitNum(txtUnit.getText().charAt(0));
+        try {
+            long homePhnNumber = Long.parseLong(txtPhn.getText());
+            homeAddress.setPhnNum(homePhnNumber);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Enter correct phone number", "WARNING!!", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            int homeZipCode = Integer.parseInt(txtZip.getText());
+            homeAddress.setZipcode(homeZipCode);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Enter correct age", "WARNING!!", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        Address workAddress = new Address();
+        workAddress.setStreetAdd(textStreetAddress1.getText());
+        workAddress.setState(txtState1.getText());
+        workAddress.setCity(txtCity1.getText());
+        workAddress.setUnitNum(txtUnit1.getText().charAt(0));
+        try {
+            long workPhnNumber = Long.parseLong(txtPhn1.getText());
+            workAddress.setPhnNum(workPhnNumber);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Enter correct phone number", "WARNING!!", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            int workZipCode = Integer.parseInt(txtZip1.getText());
+            workAddress.setZipcode(workZipCode);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Enter correct age", "WARNING!!", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            age = Integer.parseInt(textAge.getText());
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Enter correct age", "WARNING!!", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Person p = perDir.addPerson();
+        p.setFirstName(firstName);
+        p.setLastName(lastName);
+        p.setAge(age);
+        p.setWorkAdd(workAddress);
+        p.setHomeAdd(homeAddress);
+        
+        JOptionPane.showMessageDialog(this, "person has saved successfully", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+        
+        setViewMode();
+        
     }//GEN-LAST:event_buttonSaveActionPerformed
+
+    private void buttonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateActionPerformed
+        // TODO add your handling code here:
+        setEditMode();
+    }//GEN-LAST:event_buttonUpdateActionPerformed
+
+    private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_buttonBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -450,7 +560,7 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblUnit1;
     private javax.swing.JTextField textAge;
     private javax.swing.JTextField textFirstName;
-    private javax.swing.JTextField textLabelName;
+    private javax.swing.JTextField textLastName;
     private javax.swing.JTextField textStreetAddress;
     private javax.swing.JTextField textStreetAddress1;
     private javax.swing.JTextField txtCity;
@@ -465,4 +575,73 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtZip1;
     private javax.swing.JPanel workAddPanel;
     // End of variables declaration//GEN-END:variables
+
+    private void refreshAllFields(){
+        
+        textFirstName.setText(per.getFirstName());
+        textLastName.setText(per.getLastName());
+        textAge.setText(String.valueOf(per.getAge()));
+        textStreetAddress.setText(per.getHomeAdd().getStreetAdd());
+        txtCity.setText(per.getHomeAdd().getCity());
+        txtPhn.setText(String.valueOf(per.getHomeAdd().getPhnNum()));
+        txtUnit.setText(String.valueOf(per.getHomeAdd().getUnitNum()));
+        txtState.setText(per.getHomeAdd().getState());
+        txtZip.setText(String.valueOf(per.getHomeAdd().getZipcode()));
+        textStreetAddress1.setText(per.getWorkAdd().getStreetAdd());
+        txtCity1.setText(per.getWorkAdd().getCity());
+        txtPhn1.setText(String.valueOf(per.getWorkAdd().getPhnNum()));
+        txtUnit1.setText(String.valueOf(per.getWorkAdd().getUnitNum()));
+        txtState1.setText(per.getWorkAdd().getState());
+        txtZip1.setText(String.valueOf(per.getWorkAdd().getZipcode()));
+        
+       
+    }
+    
+    private void setViewMode(){
+        
+        textFirstName.setEnabled(false);
+        textLastName.setEnabled(false);
+        textAge.setEnabled(false);
+        textStreetAddress.setEnabled(false);
+        txtCity.setEnabled(false);
+        txtPhn.setEnabled(false);
+        txtUnit.setEnabled(false);
+        txtState.setEnabled(false);
+        txtZip.setEnabled(false);
+        textStreetAddress1.setEnabled(false);
+        txtCity1.setEnabled(false);
+        txtPhn1.setEnabled(false);
+        txtUnit1.setEnabled(false);
+        txtState1.setEnabled(false);
+        txtZip1.setEnabled(false);
+        
+        buttonSave.setEnabled(false);
+        buttonUpdate.setEnabled(true);
+        
+    }
+    
+        private void setEditMode(){
+        
+        textFirstName.setEnabled(true);
+        textLastName.setEnabled(true);
+        textAge.setEnabled(true);
+        textStreetAddress.setEnabled(true);
+        txtCity.setEnabled(true);
+        txtPhn.setEnabled(true);
+        txtUnit.setEnabled(true);
+        txtState.setEnabled(true);
+        txtZip.setEnabled(true);
+        textStreetAddress1.setEnabled(true);
+        txtCity1.setEnabled(true);
+        txtPhn1.setEnabled(true);
+        txtUnit1.setEnabled(true);
+        txtState1.setEnabled(true);
+        txtZip1.setEnabled(true);
+        
+        buttonSave.setEnabled(true);
+        buttonUpdate.setEnabled(false);
+        
+    }
+    
+
 }

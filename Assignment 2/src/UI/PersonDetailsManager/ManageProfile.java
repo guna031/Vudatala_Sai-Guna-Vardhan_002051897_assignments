@@ -4,6 +4,8 @@
  */
 package UI.PersonDetailsManager;
 
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.Person;
@@ -42,9 +44,9 @@ public class ManageProfile extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableProfile = new javax.swing.JTable();
         buttonBack = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        buttonView = new javax.swing.JButton();
+        buttonDelete = new javax.swing.JButton();
+        labelManage = new javax.swing.JLabel();
 
         tableProfile.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -74,21 +76,21 @@ public class ManageProfile extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("View ");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonView.setText("View ");
+        buttonView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonViewActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Delete");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonDelete.setText("Delete");
+        buttonDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buttonDeleteActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Manage Profiles");
+        labelManage.setText("Manage Profiles");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -97,13 +99,13 @@ public class ManageProfile extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1)
+                    .addComponent(buttonDelete)
+                    .addComponent(buttonView)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(buttonBack)
                             .addGap(240, 240, 240)
-                            .addComponent(jLabel1))
+                            .addComponent(labelManage))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
@@ -113,13 +115,13 @@ public class ManageProfile extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonBack)
-                    .addComponent(jLabel1))
+                    .addComponent(labelManage))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(buttonView)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(buttonDelete)
                 .addContainerGap(104, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -128,21 +130,50 @@ public class ManageProfile extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonBackActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        int selectedRow = tableProfile.getSelectedRow();
+        
+        if(selectedRow>=0){
+        Person per = (Person) tableProfile.getValueAt(selectedRow,0);
+        
+        ViewJPanel viewPanel = new ViewJPanel(userProcessContainer, perDir, per);
+        userProcessContainer.add("ViewJPanel", viewPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+            
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "select an account first to view the person details", "WARNING!!!", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_buttonViewActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        int selectedRow = tableProfile.getSelectedRow();
+        
+        if(selectedRow>=0){
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Are you sure on deleting the selected row?", "WARNING!!!", JOptionPane.WARNING_MESSAGE);
+            if (dialogButton == JOptionPane.YES_OPTION){
+                Person per = (Person) tableProfile.getValueAt(selectedRow,0);
+                perDir.delPerson(per);
+                populateTable();
+            }
+        }
+        
+        else{
+            JOptionPane.showMessageDialog(null, "Select an person that you would like to be deleted", "WARNING!!!", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_buttonDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBack;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton buttonDelete;
+    private javax.swing.JButton buttonView;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelManage;
     private javax.swing.JTable tableProfile;
     // End of variables declaration//GEN-END:variables
 public void populateTable(){
@@ -150,7 +181,7 @@ public void populateTable(){
         model.setRowCount(0);
         
         for(Person per: perDir.getPersons()){
-            Object[] rows = new Object[4];
+            Object[] rows = new Object[6];
             rows[0] = per;
             rows[1] = per.getLastName();
             rows[2] = per.getWorkAdd().getCity();
