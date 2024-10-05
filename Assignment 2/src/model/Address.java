@@ -11,7 +11,7 @@ package model;
 public class Address {
     
     String streetAdd;
-    String unitNum;
+    char unitNum;
     String city;
     String state;
     int zipcode;
@@ -25,11 +25,11 @@ public class Address {
         this.streetAdd = streetAdd;
     }
 
-    public String getUnitNum() {
+    public char getUnitNum() {
         return unitNum;
     }
 
-    public void setUnitNum(String unitNum) {
+    public void setUnitNum(char unitNum) {
         this.unitNum = unitNum;
     }
 

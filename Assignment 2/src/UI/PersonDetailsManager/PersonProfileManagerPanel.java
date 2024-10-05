@@ -4,17 +4,29 @@
  */
 package UI.PersonDetailsManager;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+import model.PersonDirectory;
+
 /**
  *
  * @author gunav
  */
 public class PersonProfileManagerPanel extends javax.swing.JPanel {
+    
+    private JPanel userProcessContainer;
+    private PersonDirectory perDir;
+    
 
     /**
      * Creates new form PersonProfileManagerPanel
      */
-    public PersonProfileManagerPanel() {
+    public PersonProfileManagerPanel(JPanel cont, PersonDirectory personDir) {
         initComponents();
+        userProcessContainer = cont;
+        perDir = personDir;
+        
+        
     }
 
     /**
@@ -40,6 +52,11 @@ public class PersonProfileManagerPanel extends javax.swing.JPanel {
         });
 
         buttonViewAll.setText("View all saved profiles");
+        buttonViewAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonViewAllActionPerformed(evt);
+            }
+        });
 
         buttonSearch.setText("search");
 
@@ -91,7 +108,19 @@ public class PersonProfileManagerPanel extends javax.swing.JPanel {
 
     private void buttonCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateActionPerformed
         // TODO add your handling code here:
+        CreateJPanel createPanel = new CreateJPanel(userProcessContainer, perDir);
+        userProcessContainer.add("CreateJPanel", createPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_buttonCreateActionPerformed
+
+    private void buttonViewAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewAllActionPerformed
+        // TODO add your handling code here:
+        ManageProfile mngPanel = new ManageProfile(userProcessContainer, perDir);
+        userProcessContainer.add("ManageProfile", mngPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_buttonViewAllActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

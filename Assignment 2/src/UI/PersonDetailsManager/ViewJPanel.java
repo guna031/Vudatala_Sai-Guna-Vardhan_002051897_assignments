@@ -4,29 +4,17 @@
  */
 package UI.PersonDetailsManager;
 
-import java.awt.CardLayout;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import model.Address;
-import model.Person;
-import model.PersonDirectory;
-
 /**
  *
  * @author gunav
  */
-public class CreateJPanel extends javax.swing.JPanel {
+public class ViewJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CreateJPanel
+     * Creates new form ViewJPanel
      */
-    private JPanel userProcessContainer;
-    private PersonDirectory perDir;
-
-    public CreateJPanel(JPanel container, PersonDirectory per) {
+    public ViewJPanel() {
         initComponents();
-        userProcessContainer = container;
-        perDir = per;
     }
 
     /**
@@ -38,15 +26,13 @@ public class CreateJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        labelFirstName = new javax.swing.JLabel();
-        textFirstName = new javax.swing.JTextField();
         labelLastName = new javax.swing.JLabel();
-        textLastName = new javax.swing.JTextField();
+        textLabelName = new javax.swing.JTextField();
         labelAge = new javax.swing.JLabel();
         textAge = new javax.swing.JTextField();
-        labelSSN = new javax.swing.JLabel();
-        textSSN = new javax.swing.JTextField();
+        buttonBack = new javax.swing.JButton();
+        labelFirstName = new javax.swing.JLabel();
+        textFirstName = new javax.swing.JTextField();
         workAddPanel = new javax.swing.JPanel();
         labelStreetAddress1 = new javax.swing.JLabel();
         textStreetAddress1 = new javax.swing.JTextField();
@@ -75,29 +61,17 @@ public class CreateJPanel extends javax.swing.JPanel {
         txtPhn = new javax.swing.JTextField();
         labelHome = new javax.swing.JLabel();
         labelWork = new javax.swing.JLabel();
-        buttonBack = new javax.swing.JButton();
+        buttonUpdate = new javax.swing.JButton();
+        buttonSave = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        buttonAdd = new javax.swing.JButton();
-        buttonView = new javax.swing.JButton();
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        labelFirstName.setText("First Name");
 
         labelLastName.setText("Last Name");
 
         labelAge.setText("Age");
 
-        labelSSN.setText("Social Security Number");
+        buttonBack.setText("<<<BACK");
+
+        labelFirstName.setText("First Name");
 
         labelStreetAddress1.setText("Street Address");
 
@@ -195,7 +169,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                 .addComponent(lblPhn1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPhn1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         labelStreetAddress.setText("Street Address");
@@ -267,9 +241,6 @@ public class CreateJPanel extends javax.swing.JPanel {
                     .addComponent(labelStreetAddress))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
-
-        homeAddPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {textStreetAddress, txtUnit});
-
         homeAddPanelLayout.setVerticalGroup(
             homeAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(homeAddPanelLayout.createSequentialGroup()
@@ -297,150 +268,109 @@ public class CreateJPanel extends javax.swing.JPanel {
                 .addComponent(lblPhn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPhn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
-
-        homeAddPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {textStreetAddress, txtUnit});
 
         labelHome.setText("Home Address");
 
         labelWork.setText("Work Address");
 
-        buttonBack.setText("<<<BACK");
-        buttonBack.addActionListener(new java.awt.event.ActionListener() {
+        buttonUpdate.setText("Update");
+
+        buttonSave.setText("Save");
+        buttonSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonBackActionPerformed(evt);
+                buttonSaveActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Add New Person");
-
-        buttonAdd.setText("Add");
-        buttonAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAddActionPerformed(evt);
-            }
-        });
-
-        buttonView.setText("View ");
-        buttonView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonViewActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("View Person Details");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(buttonBack)
-                .addGap(236, 236, 236)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(buttonBack)
+                        .addGap(279, 279, 279)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(282, 282, 282)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelAge)
+                                .addGap(44, 44, 44)
+                                .addComponent(textAge, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelLastName)
+                                .addGap(44, 44, 44)
+                                .addComponent(textLabelName, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelFirstName)
+                                .addGap(44, 44, 44)
+                                .addComponent(textFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(homeAddPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelHome)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(labelSSN)
-                            .addGap(44, 44, 44)
-                            .addComponent(textSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(labelAge)
-                            .addGap(44, 44, 44)
-                            .addComponent(textAge, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(labelLastName)
-                            .addGap(44, 44, 44)
-                            .addComponent(textLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(labelFirstName)
-                            .addGap(44, 44, 44)
-                            .addComponent(textFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 79, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buttonAdd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonView)
-                        .addGap(46, 46, 46))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(homeAddPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelHome))
+                        .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(workAddPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelWork))
-                        .addContainerGap())))
+                        .addGap(45, 45, 45))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(buttonSave)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonUpdate)
+                        .addGap(54, 54, 54))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addGap(29, 29, 29)
                         .addComponent(buttonBack))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
+                        .addGap(21, 21, 21)
                         .addComponent(jLabel1)))
-                .addGap(35, 35, 35)
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelFirstName)
+                    .addComponent(textFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelLastName)
+                    .addComponent(textLabelName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelAge)
+                    .addComponent(textAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelWork)
+                    .addComponent(labelHome))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelFirstName)
-                            .addComponent(textFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelLastName)
-                            .addComponent(textLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelAge)
-                            .addComponent(textAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelSSN)
-                            .addComponent(textSSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addComponent(labelHome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(homeAddPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelWork)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(workAddPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonAdd)
-                            .addComponent(buttonView))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addComponent(workAddPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(homeAddPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonUpdate)
+                    .addComponent(buttonSave))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {homeAddPanel, workAddPanel});
+
     }// </editor-fold>//GEN-END:initComponents
-
-    private void textStreetAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textStreetAddressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textStreetAddressActionPerformed
-
-    private void txtUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUnitActionPerformed
-
-    private void txtCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCityActionPerformed
-
-    private void txtStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtStateActionPerformed
-
-    private void txtZipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtZipActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtZipActionPerformed
-
-    private void txtPhnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhnActionPerformed
 
     private void textStreetAddress1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textStreetAddress1ActionPerformed
         // TODO add your handling code here:
@@ -466,125 +396,45 @@ public class CreateJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPhn1ActionPerformed
 
-    private void buttonViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewActionPerformed
+    private void textStreetAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textStreetAddressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonViewActionPerformed
+    }//GEN-LAST:event_textStreetAddressActionPerformed
 
-    private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
+    private void txtUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnitActionPerformed
         // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_buttonBackActionPerformed
+    }//GEN-LAST:event_txtUnitActionPerformed
 
-    private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
+    private void txtCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_txtCityActionPerformed
 
-        String firstName = textFirstName.getText();
-        String lastName = textLastName.getText();
-        String ssn = textSSN.getText();
-        int age;
+    private void txtStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStateActionPerformed
 
-        if (firstName.isBlank() || lastName.isBlank() || ssn.isBlank()) {
-            JOptionPane.showMessageDialog(this, "Please Enter all the required fields", "Error!", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        Address homeAddress = new Address();
-        homeAddress.setStreetAdd(textStreetAddress.getText());
-        homeAddress.setState(txtState.getText());
-        homeAddress.setCity(txtCity.getText());
-        homeAddress.setUnitNum(txtUnit.getText().charAt(0));
-        try {
-            long homePhnNumber = Long.parseLong(txtPhn.getText());
-            homeAddress.setPhnNum(homePhnNumber);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Enter correct phone number", "WARNING!!", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
+    private void txtZipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtZipActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtZipActionPerformed
 
-        try {
-            int homeZipCode = Integer.parseInt(txtZip.getText());
-            homeAddress.setZipcode(homeZipCode);
+    private void txtPhnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhnActionPerformed
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Enter correct age", "WARNING!!", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        Address workAddress = new Address();
-        workAddress.setStreetAdd(textStreetAddress1.getText());
-        workAddress.setState(txtState1.getText());
-        workAddress.setCity(txtCity1.getText());
-        workAddress.setUnitNum(txtUnit1.getText().charAt(0));
-        try {
-            long workPhnNumber = Long.parseLong(txtPhn1.getText());
-            workAddress.setPhnNum(workPhnNumber);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Enter correct phone number", "WARNING!!", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        try {
-            int workZipCode = Integer.parseInt(txtZip1.getText());
-            workAddress.setZipcode(workZipCode);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Enter correct age", "WARNING!!", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        try {
-            age = Integer.parseInt(textAge.getText());
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Enter correct age", "WARNING!!", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        Person p = perDir.addPerson();
-        p.setFirstName(firstName);
-        p.setLastName(lastName);
-        p.setAge(age);
-        p.setSocialSecurityNumber(ssn);
-        p.setWorkAdd(workAddress);
-        p.setHomeAdd(homeAddress);
-        
-        JOptionPane.showMessageDialog(this, "person has saved successfully", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
-        
-        textFirstName.setText("");
-        textLastName.setText("");
-        textSSN.setText("");
-        textAge.setText("");
-        txtCity.setText("");
-        txtPhn.setText("");
-        txtState.setText("");
-        txtUnit.setText("");
-        textStreetAddress.setText("");
-        txtZip.setText("");
-        txtCity1.setText("");
-        txtPhn1.setText("");
-        txtState1.setText("");
-        txtUnit1.setText("");
-        textStreetAddress1.setText("");
-        txtZip1.setText("");
-
-     
-    }//GEN-LAST:event_buttonAddActionPerformed
+    private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonSaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonAdd;
     private javax.swing.JButton buttonBack;
-    private javax.swing.JButton buttonView;
+    private javax.swing.JButton buttonSave;
+    private javax.swing.JButton buttonUpdate;
     private javax.swing.JPanel homeAddPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelAge;
     private javax.swing.JLabel labelFirstName;
     private javax.swing.JLabel labelHome;
     private javax.swing.JLabel labelLastName;
-    private javax.swing.JLabel labelSSN;
     private javax.swing.JLabel labelState;
     private javax.swing.JLabel labelState1;
     private javax.swing.JLabel labelStreetAddress;
@@ -600,8 +450,7 @@ public class CreateJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblUnit1;
     private javax.swing.JTextField textAge;
     private javax.swing.JTextField textFirstName;
-    private javax.swing.JTextField textLastName;
-    private javax.swing.JTextField textSSN;
+    private javax.swing.JTextField textLabelName;
     private javax.swing.JTextField textStreetAddress;
     private javax.swing.JTextField textStreetAddress1;
     private javax.swing.JTextField txtCity;

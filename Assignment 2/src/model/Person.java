@@ -64,5 +64,10 @@ public class Person {
     public void setWorkAdd(Address workAdd) {
         this.workAdd = workAdd;
     }
+    
+    @Override
+   public String toString(){
+       return getFirstName();
+   }
 
 }
