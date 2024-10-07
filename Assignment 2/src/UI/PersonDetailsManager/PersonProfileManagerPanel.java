@@ -44,6 +44,8 @@ public class PersonProfileManagerPanel extends javax.swing.JPanel {
         buttonSearch = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(243, 229, 245));
+
         buttonCreate.setText("Create New Profile");
         buttonCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,9 +103,9 @@ public class PersonProfileManagerPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(buttonSearch)
                 .addGap(66, 66, 66)
-                .addComponent(buttonCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonViewAll, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonViewAll, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(185, Short.MAX_VALUE))
         );
 
@@ -133,12 +135,12 @@ public class PersonProfileManagerPanel extends javax.swing.JPanel {
             String searchText = textSearch.getText();
           
 
-            Person foundAcc = perDir.searchByFirstName(searchText);
-            Person foundAcc2 = perDir.searchByLastName(searchText);
-            Person foundAcc3 = perDir.searchByWorkAdd(searchText);
-            Person foundAcc4 = perDir.searchByHomeAdd(searchText);
+            Person foundPer = perDir.searchByFirstName(searchText);
+            Person foundPer2 = perDir.searchByLastName(searchText);
+            Person foundPer3 = perDir.searchByWorkAdd(searchText);
+            Person foundPer4 = perDir.searchByHomeAdd(searchText);
             
-            Person foundPerson = (foundAcc != null) ? foundAcc : (foundAcc2!=null) ? foundAcc2 : (foundAcc3 != null) ? foundAcc3: foundAcc4;
+            Person foundPerson = (foundPer != null) ? foundPer : (foundPer2!=null) ? foundPer2 : (foundPer3 != null) ? foundPer3: foundPer4;
 
             if (foundPerson != null) {
 

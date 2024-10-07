@@ -21,20 +21,19 @@ public class ViewJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewJPanel
      */
-    
     private JPanel userProcessContainer;
     private PersonDirectory perDir;
     private Person per;
-    
+
     public ViewJPanel(JPanel container, PersonDirectory personDir, Person person) {
         initComponents();
         userProcessContainer = container;
         perDir = personDir;
         per = person;
-        
+
         refreshAllFields();
         setViewMode();
-        
+
     }
 
     /**
@@ -83,13 +82,17 @@ public class ViewJPanel extends javax.swing.JPanel {
         buttonUpdate = new javax.swing.JButton();
         buttonSave = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        buttonBack1 = new javax.swing.JButton();
+        buttonBackManage = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(243, 229, 245));
 
         labelLastName.setText("Last Name");
 
         labelAge.setText("Age");
 
         labelFirstName.setText("First Name");
+
+        workAddPanel.setBackground(new java.awt.Color(225, 245, 254));
 
         labelStreetAddress1.setText("Street Address");
 
@@ -189,6 +192,8 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addComponent(txtPhn1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        homeAddPanel.setBackground(new java.awt.Color(255, 243, 224));
 
         labelStreetAddress.setText("Street Address");
 
@@ -307,12 +312,13 @@ public class ViewJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("View Person Details");
 
-        buttonBack1.setText("<<<BACK");
-        buttonBack1.addActionListener(new java.awt.event.ActionListener() {
+        buttonBackManage.setText("<<<BACK ");
+        buttonBackManage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonBack1ActionPerformed(evt);
+                buttonBackManageActionPerformed(evt);
             }
         });
 
@@ -320,62 +326,55 @@ public class ViewJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(642, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(127, 127, 127)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(labelAge)
-                                        .addGap(44, 44, 44)
-                                        .addComponent(textAge, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(labelLastName)
-                                        .addGap(44, 44, 44)
-                                        .addComponent(textLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelFirstName)
-                        .addGap(44, 44, 44)
-                        .addComponent(textFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 79, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(homeAddPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(labelHome)))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(workAddPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelWork))
-                        .addGap(45, 45, 45))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(buttonSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonUpdate)
-                        .addGap(62, 62, 62))))
+                        .addGap(62, 62, 62))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(homeAddPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(labelHome)))
+                                .addGap(36, 36, 36)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(workAddPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelWork)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelAge)
+                                .addGap(44, 44, 44)
+                                .addComponent(textAge, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelLastName)
+                                .addGap(44, 44, 44)
+                                .addComponent(textLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelFirstName)
+                                .addGap(44, 44, 44)
+                                .addComponent(textFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(45, 45, 45))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(358, 358, 358)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(55, 55, 55)
-                    .addComponent(buttonBack1)
-                    .addContainerGap(782, Short.MAX_VALUE)))
+                    .addComponent(buttonBackManage)
+                    .addContainerGap(779, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labelFirstName)
                     .addComponent(textFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -387,7 +386,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelAge)
                     .addComponent(textAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelWork)
                     .addComponent(labelHome))
@@ -399,11 +398,11 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonUpdate)
                     .addComponent(buttonSave))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(39, 39, 39)
-                    .addComponent(buttonBack1)
+                    .addComponent(buttonBackManage)
                     .addContainerGap(593, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -458,7 +457,7 @@ public class ViewJPanel extends javax.swing.JPanel {
 
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
         // TODO add your handling code here:
-        
+
         String firstName = textFirstName.getText();
         String lastName = textLastName.getText();
         int age;
@@ -467,7 +466,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please Enter all the required fields", "Error!", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         Address homeAddress = new Address();
         homeAddress.setStreetAdd(textStreetAddress.getText());
         homeAddress.setState(txtState.getText());
@@ -486,7 +485,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             homeAddress.setZipcode(homeZipCode);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Enter correct age", "WARNING!!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Enter correct zipcode", "WARNING!!", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -508,7 +507,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             workAddress.setZipcode(workZipCode);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Enter correct age", "WARNING!!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Enter correct zipcode", "WARNING!!", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -519,18 +518,17 @@ public class ViewJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Enter correct age", "WARNING!!", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
-        Person p = perDir.addPerson();
-        p.setFirstName(firstName);
-        p.setLastName(lastName);
-        p.setAge(age);
-        p.setWorkAdd(workAddress);
-        p.setHomeAdd(homeAddress);
-        
-        JOptionPane.showMessageDialog(this, "person has saved successfully", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
-        
+
+        per.setFirstName(firstName);
+        per.setLastName(lastName);
+        per.setAge(age);
+        per.setWorkAdd(workAddress);
+        per.setHomeAdd(homeAddress);
+
+        JOptionPane.showMessageDialog(this, "person has updated successfully", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+
         setViewMode();
-        
+
     }//GEN-LAST:event_buttonSaveActionPerformed
 
     private void buttonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateActionPerformed
@@ -538,14 +536,26 @@ public class ViewJPanel extends javax.swing.JPanel {
         setEditMode();
     }//GEN-LAST:event_buttonUpdateActionPerformed
 
-    private void buttonBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBack1ActionPerformed
+    private void buttonBackManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackManageActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_buttonBack1ActionPerformed
+        userProcessContainer.remove(this);
+        Component[] panelStack = userProcessContainer.getComponents();
+        JPanel lastPanel = (JPanel) panelStack[panelStack.length - 1];  // Get the last panel (previous panel)
+
+        if (lastPanel instanceof ManageProfile) {
+            ManageProfile manageProfile = (ManageProfile) lastPanel;
+            manageProfile.populateTable();
+        } else if (lastPanel instanceof PersonProfileManagerPanel) {
+            PersonProfileManagerPanel managePersonProfile = (PersonProfileManagerPanel) lastPanel;
+        }
+
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_buttonBackManageActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonBack1;
+    private javax.swing.JButton buttonBackManage;
     private javax.swing.JButton buttonSave;
     private javax.swing.JButton buttonUpdate;
     private javax.swing.JPanel homeAddPanel;
@@ -585,8 +595,8 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel workAddPanel;
     // End of variables declaration//GEN-END:variables
 
-    private void refreshAllFields(){
-        
+    private void refreshAllFields() {
+
         textFirstName.setText(per.getFirstName());
         textLastName.setText(per.getLastName());
         textAge.setText(String.valueOf(per.getAge()));
@@ -602,12 +612,11 @@ public class ViewJPanel extends javax.swing.JPanel {
         txtUnit1.setText(String.valueOf(per.getWorkAdd().getUnitNum()));
         txtState1.setText(per.getWorkAdd().getState());
         txtZip1.setText(String.valueOf(per.getWorkAdd().getZipcode()));
-        
-       
+
     }
-    
-    private void setViewMode(){
-        
+
+    private void setViewMode() {
+
         textFirstName.setEnabled(false);
         textLastName.setEnabled(false);
         textAge.setEnabled(false);
@@ -623,14 +632,14 @@ public class ViewJPanel extends javax.swing.JPanel {
         txtUnit1.setEnabled(false);
         txtState1.setEnabled(false);
         txtZip1.setEnabled(false);
-        
+
         buttonSave.setEnabled(false);
         buttonUpdate.setEnabled(true);
-        
+
     }
-    
-        private void setEditMode(){
-        
+
+    private void setEditMode() {
+
         textFirstName.setEnabled(true);
         textLastName.setEnabled(true);
         textAge.setEnabled(true);
@@ -646,11 +655,10 @@ public class ViewJPanel extends javax.swing.JPanel {
         txtUnit1.setEnabled(true);
         txtState1.setEnabled(true);
         txtZip1.setEnabled(true);
-        
+
         buttonSave.setEnabled(true);
         buttonUpdate.setEnabled(false);
-        
+
     }
-    
 
 }

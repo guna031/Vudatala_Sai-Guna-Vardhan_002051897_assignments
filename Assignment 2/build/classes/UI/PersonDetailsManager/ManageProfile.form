@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="f5" green="e5" red="f3" type="rgb"/>
+    </Property>
+  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -24,7 +29,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="buttonBack" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="240" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
                           <Component id="labelManage" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" min="-2" pref="785" max="-2" attributes="0"/>
@@ -48,7 +53,7 @@
               <Component id="buttonView" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="buttonDelete" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="104" max="32767" attributes="0"/>
+              <EmptySpace pref="100" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -63,13 +68,16 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="tableProfile">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f5" green="e5" red="f3" type="rgb"/>
+            </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="6" rowCount="4">
                 <Column editable="false" title="First Name" type="java.lang.Object"/>
                 <Column editable="false" title="Last Name" type="java.lang.Object"/>
                 <Column editable="false" title="Work City" type="java.lang.Object"/>
                 <Column editable="false" title="Work Zip Code" type="java.lang.Object"/>
-                <Column editable="true" title="Home City" type="java.lang.Object"/>
+                <Column editable="false" title="Home City" type="java.lang.Object"/>
                 <Column editable="false" title="Home Zip Code" type="java.lang.Object"/>
               </Table>
             </Property>
@@ -140,6 +148,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="labelManage">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Manage Profiles"/>
       </Properties>
     </Component>

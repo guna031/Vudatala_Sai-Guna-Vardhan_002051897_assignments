@@ -48,6 +48,9 @@ public class ManageProfile extends javax.swing.JPanel {
         buttonDelete = new javax.swing.JButton();
         labelManage = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(243, 229, 245));
+
+        tableProfile.setBackground(new java.awt.Color(243, 229, 245));
         tableProfile.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -60,7 +63,7 @@ public class ManageProfile extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -90,6 +93,7 @@ public class ManageProfile extends javax.swing.JPanel {
             }
         });
 
+        labelManage.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelManage.setText("Manage Profiles");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -104,7 +108,7 @@ public class ManageProfile extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(buttonBack)
-                            .addGap(240, 240, 240)
+                            .addGap(228, 228, 228)
                             .addComponent(labelManage))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(50, Short.MAX_VALUE))
@@ -122,7 +126,7 @@ public class ManageProfile extends javax.swing.JPanel {
                 .addComponent(buttonView)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonDelete)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

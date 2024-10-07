@@ -45,7 +45,10 @@ public class MainJFrame extends javax.swing.JFrame {
 
         splitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        topPanel.setBackground(new java.awt.Color(243, 229, 245));
+
         buttonOpenPerson.setText("Open the Person Application");
+        buttonOpenPerson.setBorder(new javax.swing.border.MatteBorder(null));
         buttonOpenPerson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonOpenPersonActionPerformed(evt);
@@ -71,6 +74,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         splitPane.setTopComponent(topPanel);
 
+        userProcessContainer.setBackground(new java.awt.Color(243, 229, 245));
         userProcessContainer.setLayout(new java.awt.CardLayout());
         splitPane.setRightComponent(userProcessContainer);
 
@@ -84,7 +88,7 @@ public class MainJFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
+            .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 918, Short.MAX_VALUE)
         );
 
         pack();
