@@ -174,24 +174,24 @@ public class MainJFrame extends javax.swing.JFrame {
         p.setHomeAdd(homeAddress);
         
         Address workAddress2 = new Address();
-        workAddress2.setCity("San Francisco");
+        workAddress2.setCity("California");
         workAddress2.setPhnNum(8888888888L);
         workAddress2.setState("CA");
-        workAddress2.setStreetAdd("500 Market Street");
+        workAddress2.setStreetAdd("500 Street");
         workAddress2.setUnitNum('7');
-        workAddress2.setZipcode(94105);
+        workAddress2.setZipcode(94125);
 
         Address homeAddress2 = new Address();
-        homeAddress2.setCity("Oakland");
+        homeAddress2.setCity("New York");
         homeAddress2.setPhnNum(7777777777L);
-        homeAddress2.setState("CA");
-        homeAddress2.setStreetAdd("15 Telegraph Avenue");
+        homeAddress2.setState("NY");
+        homeAddress2.setStreetAdd("Avenue");
         homeAddress2.setUnitNum('3');
         homeAddress2.setZipcode(94612);
 
         Person p2 = perDir.addPerson();
         p2.setFirstName("Alice");
-        p2.setLastName("Wong");
+        p2.setLastName("Myan");
         p2.setAge(30);
         p2.setSocialSecurityNumber("8392746");
         p2.setWorkAdd(workAddress2);
@@ -201,45 +201,45 @@ public class MainJFrame extends javax.swing.JFrame {
         workAddress3.setCity("Austin");
         workAddress3.setPhnNum(6666666666L);
         workAddress3.setState("TX");
-        workAddress3.setStreetAdd("100 Congress Avenue");
+        workAddress3.setStreetAdd("100 Avenue");
         workAddress3.setUnitNum('5');
         workAddress3.setZipcode(78701);
 
         Address homeAddress3 = new Address();
-        homeAddress3.setCity("Round Rock");
+        homeAddress3.setCity("Los Santos");
         homeAddress3.setPhnNum(5555555555L);
-        homeAddress3.setState("TX");
-        homeAddress3.setStreetAdd("400 Brushy Creek Road");
+        homeAddress3.setState("CA");
+        homeAddress3.setStreetAdd("400 Road");
         homeAddress3.setUnitNum('9');
         homeAddress3.setZipcode(78664);
 
         Person p3 = perDir.addPerson();
         p3.setFirstName("David");
-        p3.setLastName("Lee");
+        p3.setLastName("MArston");
         p3.setAge(45);
         p3.setSocialSecurityNumber("1273849");
         p3.setWorkAdd(workAddress3);
         p3.setHomeAdd(homeAddress3);
         
         Address workAddress4 = new Address();
-        workAddress4.setCity("Seattle");
+        workAddress4.setCity("Berlin");
         workAddress4.setPhnNum(4444444444L);
-        workAddress4.setState("WA");
+        workAddress4.setState("AA");
         workAddress4.setStreetAdd("900 Pine Street");
-        workAddress4.setUnitNum('B');
+        workAddress4.setUnitNum('C');
         workAddress4.setZipcode(98101);
 
         Address homeAddress4 = new Address();
-        homeAddress4.setCity("Bellevue");
+        homeAddress4.setCity("Abu dhabi");
         homeAddress4.setPhnNum(3333333333L);
-        homeAddress4.setState("WA");
-        homeAddress4.setStreetAdd("700 Bellevue Way NE");
+        homeAddress4.setState("Dhubai");
+        homeAddress4.setStreetAdd("700 Way NE");
         homeAddress4.setUnitNum('A');
         homeAddress4.setZipcode(98004);
 
         Person p4 = perDir.addPerson();
         p4.setFirstName("Sophia");
-        p4.setLastName("Martinez");
+        p4.setLastName("Max");
         p4.setAge(27);
         p4.setSocialSecurityNumber("9128745");
         p4.setWorkAdd(workAddress4);
@@ -249,21 +249,21 @@ public class MainJFrame extends javax.swing.JFrame {
         workAddress5.setCity("Miami");
         workAddress5.setPhnNum(2222222222L);
         workAddress5.setState("FL");
-        workAddress5.setStreetAdd("123 Ocean Drive");
+        workAddress5.setStreetAdd("Drive");
         workAddress5.setUnitNum('2');
         workAddress5.setZipcode(33139);
 
         Address homeAddress5 = new Address();
-        homeAddress5.setCity("Coral Gables");
+        homeAddress5.setCity("Denver");
         homeAddress5.setPhnNum(1111111111L);
-        homeAddress5.setState("FL");
-        homeAddress5.setStreetAdd("50 Granada Boulevard");
+        homeAddress5.setState("Ohioo");
+        homeAddress5.setStreetAdd("50 Boulevard");
         homeAddress5.setUnitNum('C');
         homeAddress5.setZipcode(33134);
 
         Person p5 = perDir.addPerson();
-        p5.setFirstName("Carlos");
-        p5.setLastName("Garcia");
+        p5.setFirstName("Walter");
+        p5.setLastName("White");
         p5.setAge(34);
         p5.setSocialSecurityNumber("8391027");
         p5.setWorkAdd(workAddress5);

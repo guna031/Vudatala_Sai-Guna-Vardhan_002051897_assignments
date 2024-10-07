@@ -151,7 +151,7 @@ public class ManageProfile extends javax.swing.JPanel {
             
         }
         else{
-            JOptionPane.showMessageDialog(null, "select an account first to view the person details", "WARNING!!!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "select a row first to view the person details", "WARNING!!!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_buttonViewActionPerformed
 
@@ -170,7 +170,7 @@ public class ManageProfile extends javax.swing.JPanel {
         }
         
         else{
-            JOptionPane.showMessageDialog(null, "Select an person that you would like to be deleted", "WARNING!!!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Select a person that you would like to be deleted", "WARNING!!!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_buttonDeleteActionPerformed
 
