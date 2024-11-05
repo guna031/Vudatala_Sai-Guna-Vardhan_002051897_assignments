@@ -111,7 +111,19 @@ public class Info5001UniversityExample {
         courseSchedule.displayCourses();
         
         
-       
+        StudentDirectory sd = department.getStudentDirectory();
+        StudentProfile student1 = sd.newStudentProfile(persons.newPerson("0001", "V Sai Guna Vardhan"));
+        StudentProfile student2 = sd.newStudentProfile(persons.newPerson("0002", "Hotragn"));
+        StudentProfile student3 = sd.newStudentProfile(persons.newPerson("0003", "Varun"));
+        StudentProfile student4 = sd.newStudentProfile(persons.newPerson("0004", "Krithik"));
+        StudentProfile student5 = sd.newStudentProfile(persons.newPerson("0005", "Tirdesh"));
+        StudentProfile student6 = sd.newStudentProfile(persons.newPerson("0006", "Abhinav"));
+        StudentProfile student7 = sd.newStudentProfile(persons.newPerson("0007", "Aparna"));
+        StudentProfile student8 = sd.newStudentProfile(persons.newPerson("0008", "Krithik"));
+        StudentProfile student9 = sd.newStudentProfile(persons.newPerson("0009", "Krishna"));
+        StudentProfile student10 = sd.newStudentProfile(persons.newPerson("00010", "Harsha"));
+        
+        
  
                 
                 }

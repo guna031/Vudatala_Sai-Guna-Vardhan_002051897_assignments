@@ -73,10 +73,10 @@ public class CourseSchedule {
     if (schedule.isEmpty()) {
         System.out.println("No courses available in the catalog.");
     } else {
-        System.out.println("Courses in the catalog:");
+        System.out.println("Courses available for the semester:");
         for (CourseOffer co : schedule) {
             System.out.println("Course Name: " + co.getCourse().getName()
-                    + ", Faculty: " + co.getFacultyProfile()
+                    + ", Faculty: " + co.getFacultyProfile().getPerson().getName()
                     + ", Total number of Seats: " + co.getNumberOfSeats());
         }
     }
