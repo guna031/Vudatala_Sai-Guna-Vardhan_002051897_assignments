@@ -27,6 +27,13 @@ public class PersonDirectory {
         personlist.add(p);
         return p;
     }
+    
+     public Person newPerson(String id, String name) {
+
+        Person p = new Person(id, name);
+        personlist.add(p);
+        return p;
+    }
 
     public Person findPerson(String id) {
 

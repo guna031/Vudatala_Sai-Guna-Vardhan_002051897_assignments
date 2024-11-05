@@ -13,12 +13,22 @@ import info5100.university.example.CourseCatalog.Course;
  */
 public class SeatAssignment {
     float grade; //(Letter grade mappings: A=4.0, A-=3.7, B+=3.3, B=3.0, )
+
+   
     Seat seat;
     boolean like; //true means like and false means not like
     CourseLoad courseload;
     public SeatAssignment(CourseLoad cl, Seat s){
         seat = s;
         courseload = cl;
+    }
+    
+     public float getGrade() {
+        return grade;
+    }
+
+    public void setGrade(float grade) {
+        this.grade = grade;
     }
      
     public boolean getLike(){

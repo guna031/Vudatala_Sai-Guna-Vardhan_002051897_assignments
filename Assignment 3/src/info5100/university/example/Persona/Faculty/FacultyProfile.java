@@ -23,6 +23,23 @@ public class FacultyProfile {
         person = p;
         facultyassignments = new ArrayList();
     }
+    
+        public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public ArrayList<FacultyAssignment> getFacultyassignments() {
+        return facultyassignments;
+    }
+
+    public void setFacultyassignments(ArrayList<FacultyAssignment> facultyassignments) {
+        this.facultyassignments = facultyassignments;
+    }
+    
     public  double getProfAverageOverallRating(){
         
         double sum = 0.0;
@@ -57,5 +74,11 @@ public class FacultyProfile {
         }
         return false;
     }
+    
+    @Override
+    public String toString() {
+        return "Faculty{" + "name=" + this.getPerson().getName() + "}";
+    }
 
+        
 }

@@ -12,6 +12,8 @@ package info5100.university.example.CourseSchedule;
 public class Seat {
     
     Boolean occupied; 
+
+ 
     int number;
     SeatAssignment seatassignment; //links back to studentprofile
     CourseOffer courseoffer;
@@ -20,6 +22,22 @@ public class Seat {
         number = n;
         occupied = false;
         
+    }
+    
+       public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public SeatAssignment getSeatassignment() {
+        return seatassignment;
+    }
+
+    public void setSeatassignment(SeatAssignment seatassignment) {
+        this.seatassignment = seatassignment;
     }
     
     public Boolean isOccupied(){
@@ -38,4 +56,11 @@ public class Seat {
     public int getCourseCredits(){
         return courseoffer.getCreditHours();
     }
+    
+    @Override
+    public String toString() {
+        return "Seat{" + "seatNumber=" + number + ", occupied=" + occupied + "}";
+    }
+
+    
 }

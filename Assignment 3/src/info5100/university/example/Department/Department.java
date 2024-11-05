@@ -10,9 +10,11 @@ import info5100.university.example.CourseCatalog.CourseCatalog;
 import info5100.university.example.CourseSchedule.CourseLoad;
 import info5100.university.example.CourseSchedule.CourseOffer;
 import info5100.university.example.CourseSchedule.CourseSchedule;
+import info5100.university.example.CourseSchedule.SeatAssignment;
 import info5100.university.example.Degree.Degree;
 import info5100.university.example.Employer.EmployerDirectory;
 import info5100.university.example.Persona.Faculty.FacultyDirectory;
+import info5100.university.example.Persona.Faculty.FacultyProfile;
 import info5100.university.example.Persona.PersonDirectory;
 import info5100.university.example.Persona.StudentDirectory;
 import info5100.university.example.Persona.StudentProfile;
@@ -23,6 +25,70 @@ import java.util.HashMap;
  * @author kal bugrara
  */
 public class Department {
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public CourseCatalog getCoursecatalog() {
+        return coursecatalog;
+    }
+
+    public void setCoursecatalog(CourseCatalog coursecatalog) {
+        this.coursecatalog = coursecatalog;
+    }
+
+    public PersonDirectory getPersondirectory() {
+        return persondirectory;
+    }
+
+    public void setPersondirectory(PersonDirectory persondirectory) {
+        this.persondirectory = persondirectory;
+    }
+
+    public StudentDirectory getStudentdirectory() {
+        return studentdirectory;
+    }
+
+    public void setStudentdirectory(StudentDirectory studentdirectory) {
+        this.studentdirectory = studentdirectory;
+    }
+
+    public FacultyDirectory getFacultydirectory() {
+        return facultydirectory;
+    }
+
+    public void setFacultydirectory(FacultyDirectory facultydirectory) {
+        this.facultydirectory = facultydirectory;
+    }
+
+    public EmployerDirectory getEmployerdirectory() {
+        return employerdirectory;
+    }
+
+    public void setEmployerdirectory(EmployerDirectory employerdirectory) {
+        this.employerdirectory = employerdirectory;
+    }
+
+    public Degree getDegree() {
+        return degree;
+    }
+
+    public void setDegree(Degree degree) {
+        this.degree = degree;
+    }
+
+    public HashMap<String, CourseSchedule> getMastercoursecatalog() {
+        return mastercoursecatalog;
+    }
+
+    public void setMastercoursecatalog(HashMap<String, CourseSchedule> mastercoursecatalog) {
+        this.mastercoursecatalog = mastercoursecatalog;
+    }
 
     String name;
     CourseCatalog coursecatalog;
@@ -107,4 +173,12 @@ public void addElectiveCourse(Course c){
         co.assignEmptySeat(cl);
 
     }
+    
+    @Override
+    public String toString(){
+        return getName();
+    }
+    
+    
+    
 }

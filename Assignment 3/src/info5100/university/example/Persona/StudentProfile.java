@@ -17,6 +17,8 @@ import java.util.ArrayList;
 public class StudentProfile {
 
     Person person;
+
+    
     Transcript transcript;
     EmploymentHistroy employmenthistory;
 
@@ -54,5 +56,13 @@ public class StudentProfile {
 
         return transcript.getCourseList();
 
+    }
+    
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }

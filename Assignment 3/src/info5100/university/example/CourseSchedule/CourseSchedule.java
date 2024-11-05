@@ -57,5 +57,30 @@ public class CourseSchedule {
         }
         return sum;
     }
+    
+//    @Override
+//    public String toString() {
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("Course Schedule for Semester: ").append(semester).append("\n");
+//        for (CourseOffer co : schedule) {
+//            sb.append("Course: ").append(co.getCourseNumber())
+//              .append(" - ").append(co.getSubjectCourse().getName()).append("\n");
+//        }
+//        return sb.toString();
+//    }
+    
+     public void displayCourses() {
+    if (schedule.isEmpty()) {
+        System.out.println("No courses available in the catalog.");
+    } else {
+        System.out.println("Courses in the catalog:");
+        for (CourseOffer co : schedule) {
+            System.out.println("Course Name: " + co.getCourse().getName()
+                    + ", Faculty: " + co.getFacultyProfile()
+                    + ", Total number of Seats: " + co.getNumberOfSeats());
+        }
+    }
+}
+
 
 }

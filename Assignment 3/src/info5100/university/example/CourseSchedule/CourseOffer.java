@@ -24,6 +24,30 @@ public class CourseOffer {
         course = c;
         seatlist = new ArrayList();
     }
+    
+      public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public ArrayList<Seat> getSeatlist() {
+        return seatlist;
+    }
+
+    public void setSeatlist(ArrayList<Seat> seatlist) {
+        this.seatlist = seatlist;
+    }
+
+    public FacultyAssignment getFacultyassignment() {
+        return facultyassignment;
+    }
+
+    public void setFacultyassignment(FacultyAssignment facultyassignment) {
+        this.facultyassignment = facultyassignment;
+    }
      
     public void AssignAsTeacher(FacultyProfile fp) {
 
@@ -83,11 +107,24 @@ public class CourseOffer {
         }
         return sum;
     }
-    public Course getSubjectCourse(){
-        return course;
-    }
+   
     public int getCreditHours(){
         return course.getCredits();
     }
-
+    
+     public Course getSubjectCourse() {
+        return course;
+    }
+    
+    public int getNumberOfSeats(){
+        return seatlist.size();
+    }
+    
+    private static void displayCourseInfo(CourseOffer courseOffer) {
+        System.out.println("Course Name: " + courseOffer.getCourse().getName());
+        System.out.println("Faculty: " + courseOffer.getFacultyProfile());
+        System.out.println("Total number of Seats: " + courseOffer.getNumberOfSeats());
+        System.out.println("Total Seats Occupied: " +
+                           courseOffer.getSeatlist().stream().filter(Seat::isOccupied).count());
+    }
 }

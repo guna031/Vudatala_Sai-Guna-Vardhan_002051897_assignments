@@ -39,5 +39,19 @@ public class CourseCatalog {
         }
         return null;
     }
+    
+    public void displayCourses() {
+    if (courselist.isEmpty()) {
+        System.out.println("No courses available in the catalog.");
+    } else {
+        System.out.println("Courses in the catalog:");
+        for (Course course : courselist) {
+            System.out.println("Course Name: " + course.getName() 
+                    + ", Course Number: " + course.getNumber() 
+                    + ", Credits: " + course.getCredits());
+        }
+    }
+}
+
 
 }
