@@ -163,7 +163,37 @@ public class Info5001UniversityExample {
         courseLoad10.newSeatAssignment(coreOffer1);
         courseLoad10.newSeatAssignment(electiveOffer7);
         
-      
+        courseLoad.getSeatAssignments().get(0).setGrade(3.7f); 
+        courseLoad.getSeatAssignments().get(1).setGrade(3.3f); 
+
+        courseLoad2.getSeatAssignments().get(0).setGrade(3.0f); 
+        courseLoad2.getSeatAssignments().get(1).setGrade(3.7f); 
+
+        courseLoad3.getSeatAssignments().get(0).setGrade(4.0f); 
+        courseLoad3.getSeatAssignments().get(1).setGrade(3.3f); 
+
+        courseLoad4.getSeatAssignments().get(0).setGrade(3.3f); 
+        courseLoad4.getSeatAssignments().get(1).setGrade(3.7f); 
+
+        courseLoad5.getSeatAssignments().get(0).setGrade(3.0f);
+        courseLoad5.getSeatAssignments().get(1).setGrade(3.3f); 
+
+        courseLoad6.getSeatAssignments().get(0).setGrade(3.7f);
+        courseLoad6.getSeatAssignments().get(1).setGrade(4.0f);
+
+        courseLoad7.getSeatAssignments().get(0).setGrade(3.0f); 
+        courseLoad7.getSeatAssignments().get(1).setGrade(3.3f); 
+
+        courseLoad8.getSeatAssignments().get(0).setGrade(4.0f); 
+        courseLoad8.getSeatAssignments().get(1).setGrade(3.0f); 
+
+        courseLoad9.getSeatAssignments().get(0).setGrade(3.7f); 
+        courseLoad9.getSeatAssignments().get(1).setGrade(3.3f);
+
+        courseLoad10.getSeatAssignments().get(0).setGrade(4.0f); 
+        courseLoad10.getSeatAssignments().get(1).setGrade(3.0f); 
+
+        department.generateSemesterReport("Spring2024");
  
                 
                 }

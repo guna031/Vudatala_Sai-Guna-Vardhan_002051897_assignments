@@ -179,5 +179,46 @@ public void addElectiveCourse(Course c){
         return getName();
     }
     
+    public void generateSemesterReport(String semester) {
+        System.out.println("Semester Report for " + semester);
+        System.out.println("----------------------------------------");
+
+        for (StudentProfile student : studentdirectory.getStudentlist()) {
+            CourseLoad courseLoad = student.getCourseLoadBySemester(semester);
+            if (courseLoad == null) continue; // Skip students without this semester's course load
+
+            float totalGradePoints = 0;
+            int totalCredits = 0;
+            int totalFees = 0;
+
+            System.out.println("Student: " + student.getPerson().getName());
+            System.out.println("Courses Registered:");
+
+            for (SeatAssignment sa : courseLoad.getSeatAssignments()) {
+                CourseOffer courseOffer = sa.getCourseOffer();
+                FacultyProfile professor = courseOffer.getFacultyProfile();
+                Course course = courseOffer.getCourse();
+                float grade = sa.getGrade();
+                int credits = course.getCredits();
+                int fee = course.getCoursePrice();
+
+                System.out.println("  - Course: " + course.getName() +
+                                   " | Professor: " + (professor != null ? professor.getPerson().getName() : "N/A") +
+                                   " | Grade: " + grade +
+                                   " | Credits: " + credits +
+                                   " | Fee: $" + fee);
+
+                totalGradePoints += grade * credits;
+                totalCredits += credits;
+                totalFees += fee;
+            }
+
+            float gpa = totalCredits == 0 ? 0 : totalGradePoints / totalCredits;
+            System.out.println("Average GPA: " + String.format("%.2f", gpa));
+            System.out.println("Total Tuition Fees Paid: $" + totalFees);
+            System.out.println("----------------------------------------");
+        }
+    }
+    
     
 }
