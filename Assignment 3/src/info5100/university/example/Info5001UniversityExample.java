@@ -42,6 +42,8 @@ public class Info5001UniversityExample {
         Course electiveCourse4 = coursecatalog.newCourse("User Interface and User experience", "cs1999", 4);
         Course electiveCourse5 = coursecatalog.newCourse("Machine Learning", "cs1228", 4);
         Course electiveCourse6 = coursecatalog.newCourse("Machine Learning", "cs1228", 4);
+        Course electiveCourse7 = coursecatalog.newCourse("Machine Learning", "cs1228", 4);
+
 
         
         coursecatalog.displayCourses();
