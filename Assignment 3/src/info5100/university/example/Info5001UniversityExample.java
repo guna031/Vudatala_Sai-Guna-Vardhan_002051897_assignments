@@ -123,7 +123,47 @@ public class Info5001UniversityExample {
         StudentProfile student9 = sd.newStudentProfile(persons.newPerson("0009", "Krishna"));
         StudentProfile student10 = sd.newStudentProfile(persons.newPerson("00010", "Harsha"));
         
+        CourseLoad courseLoad = student1.newCourseLoad("Spring2024");       
+        courseLoad.newSeatAssignment(coreOffer1);
+        courseLoad.newSeatAssignment(electiveOffer3);
         
+        CourseLoad courseLoad2 = student2.newCourseLoad("Spring2024");       
+        courseLoad2.newSeatAssignment(coreOffer1);
+        courseLoad2.newSeatAssignment(electiveOffer5);
+        
+        CourseLoad courseLoad3 = student3.newCourseLoad("Spring2024");       
+        courseLoad3.newSeatAssignment(coreOffer1);
+        courseLoad3.newSeatAssignment(electiveOffer4);
+        
+        CourseLoad courseLoad4 = student4.newCourseLoad("Spring2024");       
+        courseLoad4.newSeatAssignment(coreOffer2);
+        courseLoad4.newSeatAssignment(electiveOffer7);
+        
+        CourseLoad courseLoad5 = student5.newCourseLoad("Spring2024");       
+        courseLoad5.newSeatAssignment(coreOffer1);
+        courseLoad5.newSeatAssignment(electiveOffer6);
+        
+        CourseLoad courseLoad6 = student6.newCourseLoad("Spring2024");       
+        courseLoad6.newSeatAssignment(coreOffer1);
+        courseLoad6.newSeatAssignment(electiveOffer6_1);
+        
+        CourseLoad courseLoad7 = student7.newCourseLoad("Spring2024");       
+        courseLoad7.newSeatAssignment(coreOffer2);
+        courseLoad7.newSeatAssignment(electiveOffer3_1);
+        
+        CourseLoad courseLoad8 = student8.newCourseLoad("Spring2024");       
+        courseLoad8.newSeatAssignment(coreOffer2);
+        courseLoad8.newSeatAssignment(electiveOffer3_1);
+        
+        CourseLoad courseLoad9 = student9.newCourseLoad("Spring2024");       
+        courseLoad9.newSeatAssignment(coreOffer1_1);
+        courseLoad9.newSeatAssignment(electiveOffer6);
+        
+        CourseLoad courseLoad10 = student10.newCourseLoad("Spring2024");       
+        courseLoad10.newSeatAssignment(coreOffer1);
+        courseLoad10.newSeatAssignment(electiveOffer7);
+        
+      
  
                 
                 }
