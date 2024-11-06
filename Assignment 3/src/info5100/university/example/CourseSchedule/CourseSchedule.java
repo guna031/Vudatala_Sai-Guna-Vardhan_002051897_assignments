@@ -73,7 +73,9 @@ public class CourseSchedule {
     if (schedule.isEmpty()) {
         System.out.println("No courses available in the catalog.");
     } else {
+        System.out.println("----------------------------------------");
         System.out.println("Courses available for the semester:");
+        System.out.println("----------------------------------------");
         for (CourseOffer co : schedule) {
             System.out.println("Course Name: " + co.getCourse().getName()
                     + ", Faculty: " + co.getFacultyProfile().getPerson().getName()

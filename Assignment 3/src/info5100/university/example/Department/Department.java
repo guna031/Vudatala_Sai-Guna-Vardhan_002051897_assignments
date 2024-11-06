@@ -180,45 +180,93 @@ public void addElectiveCourse(Course c){
     }
     
     public void generateSemesterReport(String semester) {
-        System.out.println("Semester Report for " + semester);
-        System.out.println("----------------------------------------");
+    System.out.println("*****************************");
+    System.out.println("Semester Report for " + semester);
+    System.out.println("*****************************");
 
-        for (StudentProfile student : studentdirectory.getStudentlist()) {
-            CourseLoad courseLoad = student.getCourseLoadBySemester(semester);
-            if (courseLoad == null) continue; // Skip students without this semester's course load
+    int totalStudents = 0;
+    float totalSemesterGPA = 0;
+    int totalSemesterFees = 0;
 
-            float totalGradePoints = 0;
-            int totalCredits = 0;
-            int totalFees = 0;
+    for (StudentProfile student : studentdirectory.getStudentlist()) {
+        CourseLoad courseLoad = student.getCourseLoadBySemester(semester);
+        if (courseLoad == null) continue; 
 
-            System.out.println("Student: " + student.getPerson().getName());
-            System.out.println("Courses Registered:");
+        totalStudents++;
+        float totalGradePoints = 0;
+        int totalCredits = 0;
+        int totalFees = 0;
 
-            for (SeatAssignment sa : courseLoad.getSeatAssignments()) {
-                CourseOffer courseOffer = sa.getCourseOffer();
-                FacultyProfile professor = courseOffer.getFacultyProfile();
-                Course course = courseOffer.getCourse();
-                float grade = sa.getGrade();
-                int credits = course.getCredits();
-                int fee = course.getCoursePrice();
+        printStudentHeader(student);
 
-                System.out.println("  - Course: " + course.getName() +
-                                   " | Professor: " + (professor != null ? professor.getPerson().getName() : "N/A") +
-                                   " | Grade: " + grade +
-                                   " | Credits: " + credits +
-                                   " | Fee: $" + fee);
+        for (SeatAssignment sa : courseLoad.getSeatAssignments()) {
+            CourseOffer courseOffer = sa.getCourseOffer();
+            FacultyProfile professor = courseOffer.getFacultyProfile();
+            Course course = courseOffer.getCourse();
+            float grade = sa.getGrade();
+            int credits = course.getCredits();
+            int fee = course.getCoursePrice();
 
-                totalGradePoints += grade * credits;
-                totalCredits += credits;
-                totalFees += fee;
-            }
+            printCourseDetails(course, professor, grade, credits, fee);
 
-            float gpa = totalCredits == 0 ? 0 : totalGradePoints / totalCredits;
-            System.out.println("Average GPA: " + String.format("%.2f", gpa));
-            System.out.println("Total Tuition Fees Paid: $" + totalFees);
-            System.out.println("----------------------------------------");
+            totalGradePoints += grade * credits;
+            totalCredits += credits;
+            totalFees += fee;
         }
+
+        float gpa = totalCredits == 0 ? 0 : totalGradePoints / totalCredits;
+        totalSemesterGPA += gpa;
+        totalSemesterFees += totalFees;
+
+        printStudentSummary(gpa, totalFees);
     }
+
+    printSemesterSummary(totalStudents, totalSemesterGPA, totalSemesterFees);
+}
+
+private void printStudentHeader(StudentProfile student) {
+    System.out.println("Student: " + student.getPerson().getName());
+    System.out.println("Courses Registered:");
+}
+
+private void printCourseDetails(Course course, FacultyProfile professor, float grade, int credits, int fee) {
+    String letterGrade = mapToLetterGrade(grade);
+    System.out.println("  - " + course.getName() +
+                       " | Professor: " + (professor != null ? professor.getPerson().getName() : "N/A") +
+                       " | Grade: " + grade + " (" + letterGrade + ")" +
+                       " | Credits: " + credits +
+                       " | Fee: $" + fee);
+    System.out.println("    --------------------------");
+}
+
+private void printStudentSummary(float gpa, int totalFees) {
+    System.out.println("Average GPA: " + String.format("%.2f", gpa));
+    System.out.println("Total Tuition Fees Paid: $" + totalFees);
+    System.out.println("**************************");
+}
+
+private void printSemesterSummary(int totalStudents, float totalGPA, int totalFees) {
+    System.out.println("========= Semester Summary =========");
+    System.out.println("Total Students Enrolled: " + totalStudents);
+    System.out.println("Average GPA for Semester: " + (totalStudents == 0 ? 0 : String.format("%.2f", totalGPA / totalStudents)));
+    System.out.println("Total Tuition Fees Collected: $" + totalFees);
+    System.out.println("**************************");
+}
+
+private String mapToLetterGrade(float grade) {
+    if (grade >= 4.0) return "A";
+    else if (grade >= 3.7) return "A-";
+    else if (grade >= 3.3) return "B+";
+    else if (grade >= 3.0) return "B";
+    else if (grade >= 2.7) return "B-";
+    else if (grade >= 2.3) return "C+";
+    else if (grade >= 2.0) return "C";
+    else if (grade >= 1.7) return "C-";
+    else if (grade >= 1.3) return "D+";
+    else if (grade >= 1.0) return "D";
+    else return "F";
+}
+
     
     
 }
